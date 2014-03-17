@@ -4,7 +4,7 @@ $(document).ready(function(){
   window.sizeOfSquare = 32;    
   window.canvas = document.getElementById('myCanvas');
   window.run = false;
-  drawGrid();
+  prepareScene();
 
   $("#stop").click(function(){
     if (window.run === true){
@@ -58,6 +58,13 @@ function randomInitArr(n, m){
   return arr;
 }
 
+function prepareScene(){
+  drawGrid();
+  var image = new Image();
+  image.src = window.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  window.canvasBg = image; 
+}
+
 function drawGrid() {
   var size = window.sizeOfSquare;
   var canvas = window.canvas
@@ -82,7 +89,9 @@ function draw() {
   var canvas = window.canvas
   var ctx = canvas.getContext('2d');
 
-  ctx.clearRect(0,0, canvas.width, canvas.height);      
+  ctx.clearRect(0, 0, canvas.width, canvas.height);  
+  ctx.drawImage(window.canvasBg, 0, 0);      
+  
   var arr = randomInitArr(canvas.width/size, canvas.height/size);
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < arr[i].length; j++) {
