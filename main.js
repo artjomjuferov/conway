@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   //here you can change size of squares 
   window.sizeOfSquare = 4;    
-  
+  window.canvas = document.getElementById('myCanvas');
   window.run = false;
 
   $("#stop").click(function(){
@@ -21,6 +21,16 @@ $(document).ready(function(){
 
   $("#next").click(function(){
     window.interval = draw();
+  });
+
+  $("#myCanvas").click(function(ev){
+    var canvas = window.canvas;
+    var x = ev.clientX - canvas.offsetLeft;
+    var y = ev.clientY - canvas.offsetTop;
+    var size = window.sizeOfSquare;
+    var ctx = canvas.getContext('2d');
+    ctx.fillRect(x-size/2, y-size/2, size, size);
+    console.log((x-size/2) +" " +(y-size/2) +" " +(x+size/2) +" " +(y+size/2));
   });
 });
 
@@ -48,17 +58,16 @@ function randomInitArr(n, m){
 }
 
 function draw() {
-  var canvas = document.getElementById('myCanvas')
-
-  ctx = canvas.getContext('2d');
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-        
   var size = window.sizeOfSquare;
+  var canvas = window.canvas
+  var ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0,0, canvas.width, canvas.height);      
   var arr = randomInitArr(canvas.width/size, canvas.height/size);
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < arr[i].length; j++) {
       if (arr[i][j] === true){
-        ctx.fillRect(i*size,j*size,i*size+size,j*size+size);
+        ctx.fillRect(i*size,j*size,size,size);
       }
     }
   }
