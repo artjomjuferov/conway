@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
   //here you can change size of squares 
-  window.sizeOfSquare = 4;    
+  window.sizeOfSquare = 32;    
   window.canvas = document.getElementById('myCanvas');
   window.run = false;
+  drawGrid();
 
   $("#stop").click(function(){
     if (window.run === true){
@@ -30,7 +31,7 @@ $(document).ready(function(){
     var size = window.sizeOfSquare;
     var ctx = canvas.getContext('2d');
     ctx.fillRect(x-size/2, y-size/2, size, size);
-    console.log((x-size/2) +" " +(y-size/2) +" " +(x+size/2) +" " +(y+size/2));
+    console.log((x-size/2) +" " +(y-size/2));
   });
 });
 
@@ -55,6 +56,25 @@ function randomInitArr(n, m){
     }
   }
   return arr;
+}
+
+function drawGrid() {
+  var size = window.sizeOfSquare;
+  var canvas = window.canvas
+  var ctx = canvas.getContext('2d');
+  for (var i = 0; i < canvas.width; i+=size) {
+      ctx.beginPath();
+      ctx.moveTo(i,0);
+      ctx.lineTo(i,canvas.height);
+      ctx.stroke();
+      ctx.closePath();  
+
+      ctx.beginPath();
+      ctx.moveTo(0,i);
+      ctx.lineTo(canvas.width, i);
+      ctx.stroke();
+      ctx.closePath();  
+  }
 }
 
 function draw() {
