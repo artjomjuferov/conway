@@ -30,7 +30,7 @@ $(document).ready(function(){
     var y = ev.clientY - canvas.offsetTop;
     var size = window.sizeOfSquare;
     var ctx = canvas.getContext('2d');
-    ctx.fillRect(x-size/2, y-size/2, size, size);
+    ctx.fillRect(x-(x % size),y-(y % size), size, size);
     console.log((x-size/2) +" " +(y-size/2));
   });
 });
