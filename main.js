@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  //here you can change size of squares 
   window.sizeOfSquare = 32;    
   window.canvas = document.getElementById('myCanvas');
   window.run = false;
@@ -17,6 +16,17 @@ $(document).ready(function(){
     if (window.run === false){
       window.interval = setInterval(draw,1000);
       window.run = true;
+    }
+  });
+
+  $("#squereSize").change(function(ev){
+    if (window.run === false){
+      window.sizeOfSquare = this.value;
+
+      var canvas = window.canvas
+      var ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);  
+      prepareScene();
     }
   });
 
@@ -70,6 +80,7 @@ function drawGrid() {
   var canvas = window.canvas
   var ctx = canvas.getContext('2d');
   for (var i = 0; i < canvas.width; i+=size) {
+      console.log(i);
       ctx.beginPath();
       ctx.moveTo(i,0);
       ctx.lineTo(i,canvas.height);
