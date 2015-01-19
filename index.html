@@ -7,31 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       body {
-        /*background-color:;*/
+          /*background-color:;*/
       }
       canvas {
-        background-color:white;
-        border:3px solid red;
+          background-color:white;
+          border:3px solid red;
       }
     </style>
   </head>
   <body>
-    <button id="start">Start</button>
+    |||<button id="start">Start</button>
     <button id="next">Next step</button>
-    <button id="stop">Stop</button>
-    Squere size
-    <select id="squereSize">
-      <option value="16">
-        small
-      </option>
-      <option value="32" selected="selected">
-        medium
-      </option>
-      <option value="64">
-        big
-      </option>
+    <button id="stop">Stop</button>|||Cell Type
+    <select id="cellType">
+       <option value="regular" selected="selected">regular</option>
+       <option value="init">init</option>
+       <option value="stones">stones</option>
+    </select> <a id="status"></a>
+    |||Time(seconds)
+    <select id="timeInterval">
+       <option value="500">0.5</option>
+        <option value="250" selected="selected">0.25</option>
+        <option value="125">0.12</option>
+    </select> <a id="status"></a>|||Scene Type
+    <select id="way">
+       <option value="regular" >regular</option>
+       <option value="thor" selected="selected">thor</option>
+       <option value="lent">lent</option>
     </select>
-    <canvas id="myCanvas" height="320" width="640"></canvas>
+   |||Period 
+    <select id="period">
+       <option value=0>0</option>
+        <option value=1>1</option>
+    <option value=2>2</option>
+       <option value=3 selected="selected">3</option>
+        <option value=4>4</option>
+    <option value=5>5</option>
+    </select>|||Death Time
+    <select id="period">
+       <option value=0>0</option>
+        <option value=1>1</option>
+    <option value=2>2</option>
+       <option value=3 selected="selected">3</option>
+        <option value=4>4</option>
+    <option value=5>5</option>
+    </select>
+    |||
+    
+    <button id="save">Save</button>
+    <input type="file" id="open"/>
+    <canvas id="myCanvas" height="640" width="640"></canvas>
+  </body>
 
     <script src="jquery-2.1.0.min.js"></script>
     <script src="main.js"></script>
